@@ -28,12 +28,32 @@ class CodableDocumentTests: XCTestCase {
     }
 
     func testDocument() {
+
+        
         struct Model: Codable, Equatable, Documentable {
             let number: Int = 0
             let string: String = "Ballcap"
         }
         let document: Document<Model> = Document()
+        print(document)
+
         let dict: [String: Any] = ["number": 0, "string": "Ballcap"]
         assertRoundTrip(model: document.data!, encoded: dict)
+    }
+
+    func testDocument2() {
+
+        class Object: Document, Modelable {
+            var data: Object.Model? = Model()
+            struct Model: Codable, Documentable {
+                let number: Int = 0
+                let string: String = "Ballcap"
+            }
+        }
+
+        let object: Object = Object()
+
+
+        print(object)
     }
 }

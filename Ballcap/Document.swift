@@ -13,12 +13,6 @@ public protocol Documentable {
     init()
 }
 
-//extension Documentable {
-//    init() {
-//        self.init()
-//    }
-//}
-
 public enum DocumentError: Error {
     case invalidReference
     case invalidData
@@ -33,7 +27,96 @@ public enum DocumentError: Error {
     }
 }
 
-public class Document<T: Codable & Documentable>: NSObject, Referencable {
+public protocol Modelable: class, Referencable {
+
+    associatedtype Model: Codable & Documentable = Void
+
+    var data: Model? { get set }
+}
+
+public extension Modelable where Self: Document {
+
+    init(id: String, from data: Model) {
+        self.init(id: id)
+        self.data = data
+    }
+
+    init?(id: String, from data: [String: Any]) {
+        self.init(id: id)
+        do {
+            self.data = try Firestore.Decoder().decode(Model.self, from: data)
+        } catch (let error) {
+            print(error)
+            return nil
+        }
+    }
+
+    init?(snapshot: DocumentSnapshot) {
+        guard let data: [String: Any] = snapshot.data() else {
+            self.init(id: snapshot.documentID)
+            self.snapshot = snapshot
+            return
+        }
+        do {
+            self.init(id: snapshot.documentID)
+            self.snapshot = snapshot
+            self.data = try Firestore.Decoder().decode(Model.self, from: data)
+        } catch (let error) {
+            print(error)
+            return nil
+        }
+    }
+}
+
+//public extension Document {
+//
+//    static var modelVersion: String {
+//        return "1"
+//    }
+//
+//    static var modelName: String {
+//        return String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!.lowercased()
+//    }
+//
+//    static var path: String {
+//        return "version/\(self.modelVersion)/\(self.modelName)"
+//    }
+//
+//    static var collectionReference: CollectionReference {
+//        return Firestore.firestore().collection(self.path)
+//    }
+//
+//    var storageReference: StorageReference {
+//        return Storage.storage().reference().child(self.path)
+//    }
+//
+//    var path: String {
+//        return self.documentReference.path
+//    }
+//
+//    var id: String {
+//        return self.documentReference.documentID
+//    }
+//
+//    init() {
+//        self.init()
+//        self.data = Model()
+////        self.documentReference = type(of: self).collectionReference.document()
+//    }
+//
+//    init(id: String) {
+//        self.init()
+////        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//
+//    init(id: String, from data: Model) {
+//        self.init()
+//        self.data = data
+////        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//}
+
+public class Document: NSObject, Referencable {
 
     public enum SourceType {
         case `default`
@@ -46,14 +129,14 @@ public class Document<T: Codable & Documentable>: NSObject, Referencable {
     }
 
     open class var modelName: String {
-        return String(describing: Mirror(reflecting: T.self).subjectType).components(separatedBy: ".").first!.lowercased()
+        return String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!.lowercased()
     }
 
     open class var path: String {
         return "version/\(self.modelVersion)/\(self.modelName)"
     }
 
-    open class var reference: CollectionReference {
+    open class var collectionReference: CollectionReference {
         return Firestore.firestore().collection(self.path)
     }
 
@@ -65,7 +148,7 @@ public class Document<T: Codable & Documentable>: NSObject, Referencable {
         return self.documentReference.path
     }
 
-    public private(set) var snapshot: DocumentSnapshot?
+    public fileprivate(set) var snapshot: DocumentSnapshot?
 
     public private(set) var documentReference: DocumentReference!
 
@@ -73,55 +156,107 @@ public class Document<T: Codable & Documentable>: NSObject, Referencable {
         return Storage.storage().reference().child(self.path)
     }
 
-    public var data: T?
-
     public override init() {
-        self.data = T()
         super.init()
-        self.documentReference = type(of: self).reference.document()
+        self.documentReference = type(of: self).collectionReference.document()
     }
 
-    public init(id: String) {
-        self.data = T()
+    public required init(id: String) {
         super.init()
-        self.documentReference = type(of: self).reference.document(id)
-    }
-
-    public init(id: String, from data: T) {
-        self.data = data
-        super.init()
-        self.documentReference = type(of: self).reference.document(id)
-    }
-
-    public required init?(id: String, from data: [String: Any]) {
-        do {
-            self.data = try Firestore.Decoder().decode(T.self, from: data)
-        } catch (let error) {
-            print(error)
-            return nil
-        }
-        super.init()
-        self.documentReference = type(of: self).reference.document(id)
-    }
-
-    public init?(snapshot: DocumentSnapshot) {
-        guard let data: [String: Any] = snapshot.data() else {
-            super.init()
-            self.snapshot = snapshot
-            self.documentReference = type(of: self).reference.document(snapshot.documentID)
-            return
-        }
-        do {
-            self.data = try Firestore.Decoder().decode(T.self, from: data)
-        } catch (let error) {
-            print(error)
-            return nil
-        }
-        super.init()
-        self.documentReference = type(of: self).reference.document(id)
+        self.documentReference = type(of: self).collectionReference.document(id)
     }
 }
 
+
+//public class Document<Model: Codable & Documentable>: NSObject, Referencable {
+//
+//    public enum SourceType {
+//        case `default`
+//        case cacheOnly
+//        case networkOnly
+//    }
+//
+//    open class var modelVersion: String {
+//        return "1"
+//    }
+//
+//    open class var modelName: String {
+//        return String(describing: Mirror(reflecting: Model.self).subjectType).components(separatedBy: ".").first!.lowercased()
+//    }
+//
+//    open class var path: String {
+//        return "version/\(self.modelVersion)/\(self.modelName)"
+//    }
+//
+//    open class var collectionReference: CollectionReference {
+//        return Firestore.firestore().collection(self.path)
+//    }
+//
+//    open var id: String {
+//        return self.documentReference.documentID
+//    }
+//
+//    open var path: String {
+//        return self.documentReference.path
+//    }
+//
+//    public private(set) var snapshot: DocumentSnapshot?
+//
+//    public private(set) var documentReference: DocumentReference!
+//
+//    open var storageReference: StorageReference {
+//        return Storage.storage().reference().child(self.path)
+//    }
+//
+//    public var data: Model?
+//
+//    public override init() {
+//        self.data = Model()
+//        super.init()
+//        self.documentReference = type(of: self).collectionReference.document()
+//    }
+//
+//    public init(id: String) {
+//        self.data = Model()
+//        super.init()
+//        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//
+//    public init(id: String, from data: Model) {
+//        self.data = data
+//        super.init()
+//        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//
+//    public required init?(id: String, from data: [String: Any]) {
+//        do {
+//            self.data = try Firestore.Decoder().decode(Model.self, from: data)
+//        } catch (let error) {
+//            print(error)
+//            return nil
+//        }
+//        super.init()
+//        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//
+//    public init?(snapshot: DocumentSnapshot) {
+//        guard let data: [String: Any] = snapshot.data() else {
+//            super.init()
+//            self.snapshot = snapshot
+//            self.documentReference = type(of: self).collectionReference.document(snapshot.documentID)
+//            return
+//        }
+//        do {
+//            self.data = try Firestore.Decoder().decode(Model.self, from: data)
+//        } catch (let error) {
+//            print(error)
+//            return nil
+//        }
+//        super.init()
+//        self.documentReference = type(of: self).collectionReference.document(id)
+//    }
+//}
+/*
 // MARK: -
 
 public extension Document {
@@ -205,3 +340,4 @@ public extension Document {
         return Disposer(.value(listenr))
     }
 }
+*/

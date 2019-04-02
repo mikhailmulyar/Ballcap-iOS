@@ -17,17 +17,17 @@ public final class Store {
         return cache
     }()
 
-    func get<T: Document<U>, U: Codable>(documentType: T.Type, id: String) -> T? {
-        guard let data: NSDictionary = self.cache.object(forKey: id as NSString) else {
-            return nil
-        }
-        return documentType.init(id: id, from: data as! [String : Any])
-    }
-
-    func set<T: Document<U>, U: Codable>(_ document: T, reference: DocumentReference? = nil, completion: ((Error?) -> Void)? = nil) {
-        let reference: DocumentReference = reference ?? document.documentReference
-        let data: [String: Any] = try! Firestore.Encoder().encode(document.data)
-        reference.setData(data, merge: true, completion: completion)
-    }
+//    func get<T: Document<U>, U: Codable>(documentType: T.Type, id: String) -> T? {
+//        guard let data: NSDictionary = self.cache.object(forKey: id as NSString) else {
+//            return nil
+//        }
+//        return documentType.init(id: id, from: data as! [String : Any])
+//    }
+//
+//    func set<T: Document<U>, U: Codable>(_ document: T, reference: DocumentReference? = nil, completion: ((Error?) -> Void)? = nil) {
+//        let reference: DocumentReference = reference ?? document.documentReference
+//        let data: [String: Any] = try! Firestore.Encoder().encode(document.data)
+//        reference.setData(data, merge: true, completion: completion)
+//    }
 
 }

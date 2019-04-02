@@ -17,7 +17,7 @@ public protocol Referencable {
 
     static var path: String { get }
 
-    static var reference: CollectionReference { get }
+    static var collectionReference: CollectionReference { get }
 
     var id: String { get }
 
