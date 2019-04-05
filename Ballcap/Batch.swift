@@ -29,7 +29,7 @@ public final class Batch {
         }
         let reference: DocumentReference = reference ?? document.documentReference
         do {
-            var data: [String: Any] = try Firestore.Encoder().encode(document.data!)
+            var data: [String: Any] = try Firestore.Encoder().encode(document.data()!)
             if document.isIncludedInTimestamp {
                 data["createdAt"] = FieldValue.serverTimestamp()
                 data["updatedAt"] = FieldValue.serverTimestamp()
@@ -49,7 +49,7 @@ public final class Batch {
         }
         let reference: DocumentReference = reference ?? document.documentReference
         do {
-            var data = try Firestore.Encoder().encode(document.data!)
+            var data = try Firestore.Encoder().encode(document.data()!)
             if document.isIncludedInTimestamp {
                 data["updatedAt"] = FieldValue.serverTimestamp()
             }

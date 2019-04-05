@@ -29,7 +29,7 @@ internal final class Store {
     
     func set<Document: Documentable, Model: Modelable & Codable>(_ document: Document, reference: DocumentReference? = nil) throws where Document.Model == Model {
         do {
-            let data: [String: Any] = try Firestore.Encoder().encode(document.data)
+            let data: [String: Any] = try Firestore.Encoder().encode(document.data())
             let reference: DocumentReference = reference ?? document.documentReference
             self.set(key: reference.path, data: data)
         } catch (let error) {

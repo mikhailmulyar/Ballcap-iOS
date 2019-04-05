@@ -74,13 +74,15 @@ public protocol Documentable: Equatable {
 
     var updatedAt: Timestamp { get set }
 
-    var data: Model? { get }
+    var _data: Any? { get set }
 
     init(documentReference: DocumentReference)
+
+    func data() -> Model?
 }
 
 public extension Documentable where Model == Void {
-    var data: Model? { return nil }
+    func data() -> Model? { return nil}
 }
 
 public extension Documentable {
@@ -154,28 +156,20 @@ public extension Documentable where Model: Modelable & Codable {
     // MARK: -
 
     init?(id: String, from data: [String: Any], collectionReference: CollectionReference? = nil) {
-//        self.init(id: id)
-////        do {
-////            self.data = try Firestore.Decoder().decode(Model.self, from: data)
-////            self.createdAt = data["createdAt"] as? Timestamp ?? Timestamp(date: Date())
-////            self.updatedAt = data["updatedAt"] as? Timestamp ?? Timestamp(date: Date())
-////        } catch (let error) {
-////            print(error)
-////            return nil
-////        }
-//        self.documentReference = collectionReference?.document(id) ?? Model.collectionReference.document(id)
-
-        self.init(documentReference: collectionReference?.document(id) ?? Model.collectionReference.document(id))
+        let documentReference: DocumentReference = collectionReference?.document(id) ?? Document.collectionReference.document(id)
+        self.init(documentReference: documentReference)
+        do {
+            self._data = try Firestore.Decoder().decode(Model.self, from: data)
+            self.createdAt = data["createdAt"] as? Timestamp ?? Timestamp(date: Date())
+            self.updatedAt = data["updatedAt"] as? Timestamp ?? Timestamp(date: Date())
+        } catch (let error) {
+            print(error)
+            return nil
+        }
     }
 }
 
 public class Document: Documentable {
-
-    public var data: Model? {
-        return _data as? Model
-    }
-
-    public var _data: Any?
 
     public var snapshot: DocumentSnapshot?
 
@@ -184,6 +178,8 @@ public class Document: Documentable {
     public var createdAt: Timestamp = Timestamp(date: Date())
 
     public var updatedAt: Timestamp = Timestamp(date: Date())
+
+    public var _data: Any?
 
     public required init(documentReference: DocumentReference) {
         self.documentReference = documentReference

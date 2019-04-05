@@ -23,9 +23,13 @@ class DocTests: XCTestCase {
             struct Model: Modelable & Codable {
                 var name: String?
             }
+
+            func data() -> ()? {
+                <#code#>
+            }
         }
 
-        let obj: Obj = Obj(collectionReference: Firestore.firestore().collection("a"))
+        let obj: Obj = Obj(id: "aa")
 
         XCTAssertEqual(obj.documentReference.path, "version/1/model/a")
     }
