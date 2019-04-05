@@ -17,8 +17,8 @@ internal final class Store {
         return cache
     }()
     
-    func get<T: Document<U>, U: Codable & Modelable>(documentType: T.Type, reference: DocumentReference) -> T? {
-        guard let data: U = self.get(modelType: U.self, reference: reference) else { return nil }
+    func get<Document: Documentable, Model: Modelable & Codable>(documentType: Document.Type, reference: DocumentReference) -> Document? where Document.Model == Model {
+        guard let data: Model = self.get(modelType: Model.self, reference: reference) else { return nil }
         return documentType.init(id: reference.documentID, from: data as! [String : Any], collectionReference: reference.parent)
     }
     
@@ -27,7 +27,7 @@ internal final class Store {
         return data
     }
     
-    func set<T: Document<U>, U: Codable & Modelable>(_ document: T, reference: DocumentReference? = nil) throws {
+    func set<Document: Documentable, Model: Modelable & Codable>(_ document: Document, reference: DocumentReference? = nil) throws where Document.Model == Model {
         do {
             let data: [String: Any] = try Firestore.Encoder().encode(document.data)
             let reference: DocumentReference = reference ?? document.documentReference

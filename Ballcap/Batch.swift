@@ -23,7 +23,7 @@ public final class Batch {
     }
 
     @discardableResult
-    public func save<T: Encodable>(document: Document<T>, reference: DocumentReference? = nil) -> Self {
+    public func save<Document: Documentable>(document: Document, reference: DocumentReference? = nil) -> Self where Document.Model: Modelable & Encodable {
         if isCommitted {
             fatalError("Batch is already committed")
         }
@@ -43,7 +43,7 @@ public final class Batch {
     }
 
     @discardableResult
-    public func update<T: Encodable>(document: Document<T>, reference: DocumentReference? = nil) -> Self {
+    public func update<Document: Documentable>(document: Document, reference: DocumentReference? = nil) -> Self where Document.Model: Modelable & Encodable {
         if isCommitted {
             fatalError("Batch is already committed")
         }
@@ -62,7 +62,7 @@ public final class Batch {
     }
 
     @discardableResult
-    public func delete<T: Encodable>(document: Document<T>) -> Self {
+    public func delete<Document: Documentable>(document: Document) -> Self where Document.Model: Modelable & Encodable {
         if isCommitted {
             fatalError("Batch is already committed")
         }
