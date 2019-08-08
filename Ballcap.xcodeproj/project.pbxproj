@@ -85,7 +85,6 @@
 		12F8BD6F225750FC004F7D52 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12074319224F18A500C26AD3 /* File.swift */; };
 		12F8BD7022575102004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
 		12F8BD7122575103004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
-		EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */; };
 		EF24A55122FCABB400ED079D /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54222FCABB400ED079D /* FirebaseStorage.framework */; };
 		EF24A55222FCABB400ED079D /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54322FCABB400ED079D /* nanopb.framework */; };
 		EF24A55322FCABB400ED079D /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54422FCABB400ED079D /* GoogleUtilities.framework */; };
@@ -160,7 +159,6 @@
 		12F8BD6722574D85004F7D52 /* Documentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentable.swift; sourceTree = "<group>"; };
 		12F8BD6A22574F29004F7D52 /* DataRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
 		12F8BD6C22574F44004F7D52 /* HierarchicalStructurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchicalStructurable.swift; sourceTree = "<group>"; };
-		EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "gRPCCertificates-Cpp.bundle"; path = "Carthage/Build/iOS/FirebaseFirestore.framework/gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
 		EF24A54222FCABB400ED079D /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Carthage/Build/iOS/FirebaseStorage.framework; sourceTree = "<group>"; };
 		EF24A54322FCABB400ED079D /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		EF24A54422FCABB400ED079D /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 				EF24A54922FCABB400ED079D /* leveldb-library.framework */,
 				EF24A54322FCABB400ED079D /* nanopb.framework */,
 				EF24A54522FCABB400ED079D /* Protobuf.framework */,
-				EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */,
 			);
 			name = Firestore;
 			sourceTree = "<group>";
@@ -417,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				12D75CA522538CE5004D1AC4 /* Ballcap.podspec in Resources */,
-				EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
