@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,6 +88,18 @@
 		12F8BD7022575102004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
 		12F8BD7122575103004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
 		9A7F053558477A52831BBABA /* Pods_BallcapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B83BE21360DD58230A5A04 /* Pods_BallcapTests.framework */; };
+		EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */; };
+		EF24A55122FCABB400ED079D /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54222FCABB400ED079D /* FirebaseStorage.framework */; };
+		EF24A55222FCABB400ED079D /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54322FCABB400ED079D /* nanopb.framework */; };
+		EF24A55322FCABB400ED079D /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54422FCABB400ED079D /* GoogleUtilities.framework */; };
+		EF24A55422FCABB400ED079D /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54522FCABB400ED079D /* Protobuf.framework */; };
+		EF24A55522FCABB400ED079D /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54622FCABB400ED079D /* gRPC-C++.framework */; };
+		EF24A55622FCABB400ED079D /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54722FCABB400ED079D /* GTMSessionFetcher.framework */; };
+		EF24A55822FCABB400ED079D /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54922FCABB400ED079D /* leveldb-library.framework */; };
+		EF24A55B22FCABB400ED079D /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54C22FCABB400ED079D /* FirebaseCore.framework */; };
+		EF24A55D22FCABB400ED079D /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54E22FCABB400ED079D /* gRPC-Core.framework */; };
+		EF24A55E22FCABB400ED079D /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54F22FCABB400ED079D /* FirebaseFirestore.framework */; };
+		EF24A55F22FCABB400ED079D /* BoringSSL-GRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A55022FCABB400ED079D /* BoringSSL-GRPC.framework */; };
 		F67696CBBA5B1BBD7C18AA2C /* Pods_Ballcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98346177A1C9DD332B78F541 /* Pods_Ballcap.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +173,19 @@
 		98346177A1C9DD332B78F541 /* Pods_Ballcap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ballcap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DFA584F88890D16309882E9 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		B7906A3E7F7F3CE7F194B0BF /* Pods-BallcapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallcapTests.release.xcconfig"; path = "Target Support Files/Pods-BallcapTests/Pods-BallcapTests.release.xcconfig"; sourceTree = "<group>"; };
+		EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "gRPCCertificates-Cpp.bundle"; path = "Carthage/Build/iOS/FirebaseFirestore.framework/gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
+		EF24A54222FCABB400ED079D /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Carthage/Build/iOS/FirebaseStorage.framework; sourceTree = "<group>"; };
+		EF24A54322FCABB400ED079D /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
+		EF24A54422FCABB400ED079D /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
+		EF24A54522FCABB400ED079D /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = "<group>"; };
+		EF24A54622FCABB400ED079D /* gRPC-C++.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-C++.framework"; path = "Carthage/Build/iOS/gRPC-C++.framework"; sourceTree = "<group>"; };
+		EF24A54722FCABB400ED079D /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		EF24A54922FCABB400ED079D /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
+		EF24A54B22FCABB400ED079D /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		EF24A54C22FCABB400ED079D /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
+		EF24A54E22FCABB400ED079D /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Carthage/Build/iOS/gRPC-Core.framework"; sourceTree = "<group>"; };
+		EF24A54F22FCABB400ED079D /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
+		EF24A55022FCABB400ED079D /* BoringSSL-GRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BoringSSL-GRPC.framework"; path = "Carthage/Build/iOS/BoringSSL-GRPC.framework"; sourceTree = "<group>"; };
 		F3A47902D4935E3B4AE81EFE /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -169,7 +194,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF24A55522FCABB400ED079D /* gRPC-C++.framework in Frameworks */,
+				EF24A55F22FCABB400ED079D /* BoringSSL-GRPC.framework in Frameworks */,
+				EF24A55E22FCABB400ED079D /* FirebaseFirestore.framework in Frameworks */,
+				EF24A55622FCABB400ED079D /* GTMSessionFetcher.framework in Frameworks */,
+				EF24A55822FCABB400ED079D /* leveldb-library.framework in Frameworks */,
+				EF24A55122FCABB400ED079D /* FirebaseStorage.framework in Frameworks */,
+				EF24A55D22FCABB400ED079D /* gRPC-Core.framework in Frameworks */,
+				EF24A55222FCABB400ED079D /* nanopb.framework in Frameworks */,
+				EF24A55B22FCABB400ED079D /* FirebaseCore.framework in Frameworks */,
 				F67696CBBA5B1BBD7C18AA2C /* Pods_Ballcap.framework in Frameworks */,
+				EF24A55322FCABB400ED079D /* GoogleUtilities.framework in Frameworks */,
+				EF24A55422FCABB400ED079D /* Protobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +224,7 @@
 		1283940F224B6A31000383EB = {
 			isa = PBXGroup;
 			children = (
+				EF24A52922FCA4FA00ED079D /* Firestore */,
 				12D75CA422538CE5004D1AC4 /* Ballcap.podspec */,
 				1283941B224B6A31000383EB /* Ballcap */,
 				12839426224B6A31000383EB /* BallcapTests */,
@@ -299,6 +336,26 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EF24A52922FCA4FA00ED079D /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				EF24A55022FCABB400ED079D /* BoringSSL-GRPC.framework */,
+				EF24A54B22FCABB400ED079D /* Firebase.framework */,
+				EF24A54C22FCABB400ED079D /* FirebaseCore.framework */,
+				EF24A54F22FCABB400ED079D /* FirebaseFirestore.framework */,
+				EF24A54222FCABB400ED079D /* FirebaseStorage.framework */,
+				EF24A54422FCABB400ED079D /* GoogleUtilities.framework */,
+				EF24A54622FCABB400ED079D /* gRPC-C++.framework */,
+				EF24A54E22FCABB400ED079D /* gRPC-Core.framework */,
+				EF24A54722FCABB400ED079D /* GTMSessionFetcher.framework */,
+				EF24A54922FCABB400ED079D /* leveldb-library.framework */,
+				EF24A54322FCABB400ED079D /* nanopb.framework */,
+				EF24A54522FCABB400ED079D /* Protobuf.framework */,
+				EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */,
+			);
+			name = Firestore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -340,7 +397,6 @@
 				1283941E224B6A31000383EB /* Sources */,
 				1283941F224B6A31000383EB /* Frameworks */,
 				12839420224B6A31000383EB /* Resources */,
-				EB437CE20A2FEF62953AD8C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -397,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12D75CA522538CE5004D1AC4 /* Ballcap.podspec in Resources */,
+				EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */,
 				12D75C6E2251FE5E004D1AC4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,23 +512,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EB437CE20A2FEF62953AD8C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BallcapTests/Pods-BallcapTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BallcapTests/Pods-BallcapTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BallcapTests/Pods-BallcapTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -710,6 +750,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Ballcap/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -717,6 +761,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.Ballcap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -739,6 +787,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Ballcap/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -746,6 +798,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = team.stamp.Ballcap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
