@@ -87,7 +87,6 @@
 		12F8BD6F225750FC004F7D52 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12074319224F18A500C26AD3 /* File.swift */; };
 		12F8BD7022575102004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
 		12F8BD7122575103004F7D52 /* StorageTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */; };
-		9A7F053558477A52831BBABA /* Pods_BallcapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B83BE21360DD58230A5A04 /* Pods_BallcapTests.framework */; };
 		EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */; };
 		EF24A55122FCABB400ED079D /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54222FCABB400ED079D /* FirebaseStorage.framework */; };
 		EF24A55222FCABB400ED079D /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54322FCABB400ED079D /* nanopb.framework */; };
@@ -100,7 +99,6 @@
 		EF24A55D22FCABB400ED079D /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54E22FCABB400ED079D /* gRPC-Core.framework */; };
 		EF24A55E22FCABB400ED079D /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A54F22FCABB400ED079D /* FirebaseFirestore.framework */; };
 		EF24A55F22FCABB400ED079D /* BoringSSL-GRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF24A55022FCABB400ED079D /* BoringSSL-GRPC.framework */; };
-		F67696CBBA5B1BBD7C18AA2C /* Pods_Ballcap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98346177A1C9DD332B78F541 /* Pods_Ballcap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,8 +112,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0259AA41774BDDE02031ABCB /* Pods-Ballcap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ballcap.debug.xcconfig"; path = "Target Support Files/Pods-Ballcap/Pods-Ballcap.debug.xcconfig"; sourceTree = "<group>"; };
-		0265DE2FE8A8887636B5F975 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		12074317224F16D600C26AD3 /* Disposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposer.swift; sourceTree = "<group>"; };
 		12074319224F18A500C26AD3 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1207431B224F23CC00C26AD3 /* File+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File+Codable.swift"; sourceTree = "<group>"; };
@@ -167,12 +163,6 @@
 		12F8BD6722574D85004F7D52 /* Documentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentable.swift; sourceTree = "<group>"; };
 		12F8BD6A22574F29004F7D52 /* DataRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepresentable.swift; sourceTree = "<group>"; };
 		12F8BD6C22574F44004F7D52 /* HierarchicalStructurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HierarchicalStructurable.swift; sourceTree = "<group>"; };
-		29B83BE21360DD58230A5A04 /* Pods_BallcapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BallcapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35D3D5618077A53E69D6F988 /* Pods-BallcapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallcapTests.debug.xcconfig"; path = "Target Support Files/Pods-BallcapTests/Pods-BallcapTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6C817B0A500CB3E8E5D18911 /* Pods-Ballcap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ballcap.release.xcconfig"; path = "Target Support Files/Pods-Ballcap/Pods-Ballcap.release.xcconfig"; sourceTree = "<group>"; };
-		98346177A1C9DD332B78F541 /* Pods_Ballcap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ballcap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DFA584F88890D16309882E9 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		B7906A3E7F7F3CE7F194B0BF /* Pods-BallcapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BallcapTests.release.xcconfig"; path = "Target Support Files/Pods-BallcapTests/Pods-BallcapTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF24A53A22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "gRPCCertificates-Cpp.bundle"; path = "Carthage/Build/iOS/FirebaseFirestore.framework/gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
 		EF24A54222FCABB400ED079D /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Carthage/Build/iOS/FirebaseStorage.framework; sourceTree = "<group>"; };
 		EF24A54322FCABB400ED079D /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
@@ -186,7 +176,6 @@
 		EF24A54E22FCABB400ED079D /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Carthage/Build/iOS/gRPC-Core.framework"; sourceTree = "<group>"; };
 		EF24A54F22FCABB400ED079D /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
 		EF24A55022FCABB400ED079D /* BoringSSL-GRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BoringSSL-GRPC.framework"; path = "Carthage/Build/iOS/BoringSSL-GRPC.framework"; sourceTree = "<group>"; };
-		F3A47902D4935E3B4AE81EFE /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +192,6 @@
 				EF24A55D22FCABB400ED079D /* gRPC-Core.framework in Frameworks */,
 				EF24A55222FCABB400ED079D /* nanopb.framework in Frameworks */,
 				EF24A55B22FCABB400ED079D /* FirebaseCore.framework in Frameworks */,
-				F67696CBBA5B1BBD7C18AA2C /* Pods_Ballcap.framework in Frameworks */,
 				EF24A55322FCABB400ED079D /* GoogleUtilities.framework in Frameworks */,
 				EF24A55422FCABB400ED079D /* Protobuf.framework in Frameworks */,
 			);
@@ -214,7 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				12839423224B6A31000383EB /* Ballcap.framework in Frameworks */,
-				9A7F053558477A52831BBABA /* Pods_BallcapTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +217,6 @@
 				12839426224B6A31000383EB /* BallcapTests */,
 				1283941A224B6A31000383EB /* Products */,
 				D44FFD108684D3059315383A /* Pods */,
-				9C527F98ECEAF05B7C3B4F39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,25 +299,9 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
-		9C527F98ECEAF05B7C3B4F39 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				98346177A1C9DD332B78F541 /* Pods_Ballcap.framework */,
-				29B83BE21360DD58230A5A04 /* Pods_BallcapTests.framework */,
-				F3A47902D4935E3B4AE81EFE /* Pods_Sample.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		D44FFD108684D3059315383A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0259AA41774BDDE02031ABCB /* Pods-Ballcap.debug.xcconfig */,
-				6C817B0A500CB3E8E5D18911 /* Pods-Ballcap.release.xcconfig */,
-				35D3D5618077A53E69D6F988 /* Pods-BallcapTests.debug.xcconfig */,
-				B7906A3E7F7F3CE7F194B0BF /* Pods-BallcapTests.release.xcconfig */,
-				9DFA584F88890D16309882E9 /* Pods-Sample.debug.xcconfig */,
-				0265DE2FE8A8887636B5F975 /* Pods-Sample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -374,7 +344,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1283942D224B6A31000383EB /* Build configuration list for PBXNativeTarget "Ballcap" */;
 			buildPhases = (
-				D9A456E339BD2EF8DAD59C0E /* [CP] Check Pods Manifest.lock */,
 				12839414224B6A31000383EB /* Headers */,
 				12839415224B6A31000383EB /* Sources */,
 				12839416224B6A31000383EB /* Frameworks */,
@@ -393,7 +362,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12839430224B6A31000383EB /* Build configuration list for PBXNativeTarget "BallcapTests" */;
 			buildPhases = (
-				CE61A1A0174D985C0F96060F /* [CP] Check Pods Manifest.lock */,
 				1283941E224B6A31000383EB /* Sources */,
 				1283941F224B6A31000383EB /* Frameworks */,
 				12839420224B6A31000383EB /* Resources */,
@@ -468,53 +436,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CE61A1A0174D985C0F96060F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BallcapTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D9A456E339BD2EF8DAD59C0E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Ballcap-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12839415224B6A31000383EB /* Sources */ = {
@@ -740,7 +661,6 @@
 		};
 		1283942E224B6A31000383EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0259AA41774BDDE02031ABCB /* Pods-Ballcap.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -777,7 +697,6 @@
 		};
 		1283942F224B6A31000383EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C817B0A500CB3E8E5D18911 /* Pods-Ballcap.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -813,7 +732,6 @@
 		};
 		12839431224B6A31000383EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35D3D5618077A53E69D6F988 /* Pods-BallcapTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -835,7 +753,6 @@
 		};
 		12839432224B6A31000383EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7906A3E7F7F3CE7F194B0BF /* Pods-BallcapTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
