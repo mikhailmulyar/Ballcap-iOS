@@ -61,8 +61,6 @@
 		128CDD4D225F1BB8005926E7 /* StorageBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CDD4B225F00BE005926E7 /* StorageBatch.swift */; };
 		12AE79F7225CB4B400D7EE23 /* StorageBatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AE79F6225CB4B400D7EE23 /* StorageBatchTests.swift */; };
 		12B95487228EC24200EA1DE0 /* DisposeBagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B95486228EC24200EA1DE0 /* DisposeBagTests.swift */; };
-		12D75C6E2251FE5E004D1AC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D75C6D2251FE5E004D1AC4 /* GoogleService-Info.plist */; };
-		12D75C6F2251FE5E004D1AC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D75C6D2251FE5E004D1AC4 /* GoogleService-Info.plist */; };
 		12D75C702251FF95004D1AC4 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12839443224B6AC4000383EB /* Object.swift */; };
 		12D75C752251FF95004D1AC4 /* Codable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12839435224B6AA2000383EB /* Codable+.swift */; };
 		12D75C762251FF95004D1AC4 /* CodableErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12839437224B6AA3000383EB /* CodableErrors.swift */; };
@@ -145,7 +143,6 @@
 		12AE79F6225CB4B400D7EE23 /* StorageBatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBatchTests.swift; sourceTree = "<group>"; };
 		12B95486228EC24200EA1DE0 /* DisposeBagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposeBagTests.swift; sourceTree = "<group>"; };
 		12D75C6A2251F98A004D1AC4 /* CodableFileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFileTests.swift; sourceTree = "<group>"; };
-		12D75C6D2251FE5E004D1AC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12D75C7F22520147004D1AC4 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		12D75C822252169D004D1AC4 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
 		12D75C8622530F58004D1AC4 /* StorageTaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTaskStore.swift; sourceTree = "<group>"; };
@@ -262,7 +259,6 @@
 		12839426224B6A31000383EB /* BallcapTests */ = {
 			isa = PBXGroup;
 			children = (
-				12D75C6D2251FE5E004D1AC4 /* GoogleService-Info.plist */,
 				12839427224B6A31000383EB /* BallcapTests.swift */,
 				12D75C7F22520147004D1AC4 /* TestHelper.swift */,
 				1231409E22576B8200E7BD00 /* HierarchicalStructurableTests.swift */,
@@ -422,7 +418,6 @@
 			files = (
 				12D75CA522538CE5004D1AC4 /* Ballcap.podspec in Resources */,
 				EF24A53B22FCA8AF00ED079D /* gRPCCertificates-Cpp.bundle in Resources */,
-				12D75C6E2251FE5E004D1AC4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +426,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				12D75CA622538CE5004D1AC4 /* Ballcap.podspec in Resources */,
-				12D75C6F2251FE5E004D1AC4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
