@@ -186,7 +186,7 @@ public final class File: Hashable {
 
     // MARK: - Initialize
 
-    public init(_ storageReference: StorageReference, data: Data? = nil, mimeType: MIMEType? = nil) {
+    public init(_ storageReference: StorageReference, data: Data? = nil, url: URL? = nil, mimeType: MIMEType? = nil) {
         let (name, mimeType) = File.generateFileName(storageReference.name, mimeType: mimeType)
         if let parent = storageReference.parent() {
             self.storageReference = parent.child(name)
@@ -196,6 +196,7 @@ public final class File: Hashable {
         self.path = self.storageReference.fullPath
         self.mimeType = mimeType
         self.data = data
+        self.originalURL = url
         self.uploadTask = StorageTaskStore.shared.get(upload: storageReference.fullPath)
         self.downloadTask = StorageTaskStore.shared.get(download: storageReference.fullPath)
     }
@@ -299,6 +300,7 @@ public final class File: Hashable {
             self.metadata = nil
             self.url = nil
             self.data = nil
+            self.originalURL = nil
             StorageCache.shared.delete(reference: self.storageReference)
             completion?(error)
         }
@@ -311,6 +313,9 @@ public final class File: Hashable {
     public func getData(_ size: Int64 = Int64(10e8), completion: @escaping (Data?, Error?) -> Void) -> StorageDownloadTask? {
         self.downloadTask?.cancel()
         if let data: Data = self.data {
+            completion(data, nil)
+            return nil
+        } else if let url = self.originalURL, let data = try? Data(contentsOf: url) {
             completion(data, nil)
             return nil
         }
