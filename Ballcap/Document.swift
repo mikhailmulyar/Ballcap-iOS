@@ -73,33 +73,33 @@ public final class Document<Model: Modelable & Codable>: Object, DataRepresentab
 //        }
 //    }
 
-//    public convenience init?(snapshot: DocumentSnapshot) {
-//        self.init(documentReference: snapshot.reference)
-//        self.snapshot = snapshot
-//        guard let data: [String: Any] = snapshot.data(with: .estimate) else {
-//            self.snapshot = snapshot
-//            return
-//        }
-//        do {
-//            self.data = try Firestore.Decoder().decode(Model.self, from: data)
-//            if data.keys.contains("createdAt") {
-//                self.createdAt = data["createdAt"] as? Timestamp ?? Timestamp(date: Date())
-//            }
-//            if data.keys.contains("updatedAt") {
-//                self.updatedAt = data["updatedAt"] as? Timestamp ?? Timestamp(date: Date())
-//            }
-//            DocumentCache.shared.set(key: snapshot.reference.path, data: data)
-//        } catch (let error) {
-//            print(error)
-//            return nil
-//        }
-//    }
+    public convenience init?(snapshot: DocumentSnapshot) {
+        self.init(snapshot.reference)
+        self.snapshot = snapshot
+        guard let data: [String: Any] = snapshot.data(with: .estimate) else {
+            self.snapshot = snapshot
+            return
+        }
+        do {
+            self.data = try Firestore.Decoder().decode(Model.self, from: data)
+            if data.keys.contains("createdAt") {
+                self.createdAt = data["createdAt"] as? Timestamp ?? Timestamp(date: Date())
+            }
+            if data.keys.contains("updatedAt") {
+                self.updatedAt = data["updatedAt"] as? Timestamp ?? Timestamp(date: Date())
+            }
+            DocumentCache.shared.set(key: snapshot.reference.path, data: data)
+        } catch (let error) {
+            print(error)
+            return nil
+        }
+    }
 
-//    public convenience init(id: String, from data: Model, collectionReference: CollectionReference? = nil) {
-//        let collectionReference: CollectionReference = collectionReference ?? Model.collectionReference
-//        self.init(documentReference: collectionReference.document(id))
-//        self.data = data
-//    }
+    public convenience init(id: String, from data: Model, collectionReference: CollectionReference? = nil) {
+        let collectionReference: CollectionReference = collectionReference ?? Model.collectionReference
+        self.init(collectionReference.document(id))
+        self.data = data
+    }
 
     public required init(_ documentReference: DocumentReference) {
         super.init(documentReference)
