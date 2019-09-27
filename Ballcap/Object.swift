@@ -49,13 +49,17 @@ public enum DocumentError: Error {
     }
 }
 
-open class Object: Documentable {
+open class Object: Documentable, Hashable {
 
-    public static func == (lhs: Object, rhs: Object) -> Bool {
-        return lhs.path == rhs.path
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.path)
     }
 
-    public class var name: String {
+    public static func == (lhs: Object, rhs: Object) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    open class var name: String {
         return String(describing: Mirror(reflecting: self).subjectType).components(separatedBy: ".").first!.lowercased()
     }
 

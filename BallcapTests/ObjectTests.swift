@@ -89,6 +89,49 @@ class ObjectTests: XCTestCase {
         }
         let o: Obj = Obj(id: "a")
         XCTAssertEqual(o[\.path], "a")
+        o[\.path] = "b"
+        XCTAssertEqual(o[\.path], "b")
+    }
+
+    func testDocumentCopy() {
+                class Obj: Object, DataRepresentable {
+            struct Model: Modelable & Codable & Equatable {
+                var path: String = "a"
+            }
+            var data: Model?
+        }
+        let o: Obj = Obj(id: "a")
+        XCTAssertEqual(o[\.path], "a")
+        o[\.path] = "b"
+        let copy: Obj = o.copy()
+        XCTAssertEqual(copy[\.path], "b")
+    }
+
+    func testObjectListen() {
+        let exp: XCTestExpectation = XCTestExpectation(description: "")
+        class Obj: Object, DataRepresentable, DataListenable {
+            struct Model: Modelable & Codable & Equatable {
+                var path: String = "a"
+            }
+            var listener: ListenerRegistration?
+            var data: Model?
+        }
+
+        weak var weakO: Obj?
+
+        do {
+            let o: Obj = Obj(id: "a").listen() { (_, _) in
+                exp.fulfill()
+            }
+            weakO = o
+            XCTAssertEqual(o[\.path], "a")
+            o[\.path] = "b"
+            o.update()
+            self.wait(for: [exp], timeout: 30)
+            XCTAssertEqual(o[\.path], "b")
+        }
+
+        XCTAssertNil(weakO)
     }
 
     func testObjectSaveUpdateDelete() {

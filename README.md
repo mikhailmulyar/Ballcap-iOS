@@ -20,6 +20,10 @@ Inspired by https://github.com/firebase/firebase-ios-sdk/tree/pb-codable3
 
 - Ballcap for TypeScript: https://github.com/1amageek/ballcap.ts
 
+__Sameple projects__
+
+- [Messagestore](https://github.com/1amageek/Messagestore)  Chat framework created by Cloud Firestore.
+
 ### Feature
 
 ☑️ Firestore's document schema with Swift Codable<br>
@@ -240,6 +244,71 @@ batch.commit { error in
 }
 ```
 
+### DataSource
+
+Ballcap provides a DataSource for easy handling of Collections and SubCollections.
+
+##### DataSource initialize
+
+__from Document__
+
+```swift
+let dataSource: DataSource<Item> = Document<Item>.query.dataSource()
+```
+
+__from Collection Reference__
+
+```swift
+let query: DataSource<Document<Item>>.Query = DataSource.Query(Firestore.firestore().collectionGroup("items"))
+let dataSource = DataSource(reference: query)
+```
+
+__NSDiffableDataSourceSnapshot__
+
+```swift
+self.dataSource = Document<Item>.query
+    .order(by: "updatedAt", descending: true)
+    .limit(to: 3)
+    .dataSource()
+    .retrieve(from: { (snapshot, documentSnapshot, done) in
+        let document: Document<Item> = Document(documentSnapshot.reference)
+        document.get { (item, error) in
+            done(item!)
+        }
+    })
+    .onChanged({ (snapshot, dataSourceSnapshot) in
+        var snapshot: NSDiffableDataSourceSnapshot<Section, DocumentProxy<Item>> = self.tableViewDataSource.snapshot()
+        snapshot.appendItems(dataSourceSnapshot.changes.insertions.map { DocumentProxy(document: $0)})
+        snapshot.deleteItems(dataSourceSnapshot.changes.deletions.map { DocumentProxy(document: $0)})
+        snapshot.reloadItems(dataSourceSnapshot.changes.modifications.map { DocumentProxy(document: $0)})
+        self.tableViewDataSource.apply(snapshot, animatingDifferences: true)
+    })
+    .listen()
+```
+
+__UITableViewDelegate, UITableViewDataSource__
+
+```swift
+self.dataSource = Document<Item>.query
+    .order(by: "updatedAt", descending: true)
+    .limit(to: 3)
+    .dataSource()
+    .retrieve(from: { (snapshot, documentSnapshot, done) in
+        let document: Document<Item> = Document(documentSnapshot.reference)
+        document.get { (item, error) in
+            done(item!)
+        }
+    })
+    .onChanged({ (snapshot, dataSourceSnapshot) in
+        self.tableView.performBatchUpdates({
+            self.tableView.insertRows(at: dataSourceSnapshot.changes.insertions.map { IndexPath(item: dataSourceSnapshot.after.firstIndex(of: $0)!, section: 0)}, with: .automatic)
+            self.tableView.deleteRows(at: dataSourceSnapshot.changes.deletions.map { IndexPath(item: dataSourceSnapshot.before.firstIndex(of: $0)!, section: 0)}, with: .automatic)
+            self.tableView.reloadRows(at: dataSourceSnapshot.changes.modifications.map { IndexPath(item: dataSourceSnapshot.after.firstIndex(of: $0)!, section: 0)}, with: .automatic)
+        }, completion: nil)
+    })
+    .listen()
+```
+
 ## Migrate from [Pring](https://github.com/1amageek/Pring)
 
 ### Overview
@@ -298,4 +367,119 @@ let batch: Batch = Batch()
 let room: Room = Room()
 batch.save(room.transcripts, to: room.collection(path: .transcripts))
 batch.commit()
+```
+
+
+## Using Ballcap with SwiftUI
+
+First, create an object that conforms to `ObservableObject`.
+`DataListenable` makes an Object observable.
+
+```swift
+final class User: Object, DataRepresentable, DataListenable, ObservableObject, Identifiable {
+
+    typealias ID = String
+
+    override class var name: String { "users" }
+
+    struct Model: Codable, Modelable {
+
+        var name: String = ""
+    }
+
+    @Published var data: User.Model?
+
+    var listener: ListenerRegistration?
+}
+```
+
+Next, create a `View` that displays this object.
+
+
+```swift
+struct UserView: View {
+
+    @ObservedObject var user: User
+
+    @State var isPresented: Bool = false
+
+    var body: some View {
+        VStack {
+            Text(user[\.name])
+        }
+        .navigationBarTitle(Text("User"))
+        .navigationBarItems(trailing: Button("Edit") {
+            self.isPresented.toggle()
+        })
+        .sheet(isPresented: $isPresented) {
+            UserEditView(user: self.user.copy(), isPresented: self.$isPresented)
+        }
+        .onAppear {
+            _ = self.user.listen()
+        }
+    }
+}
+```
+
+You can access the object data using `subscript`.
+
+```swift
+Text(user[\.name])
+```
+
+Start user observation with `onAppear`.
+
+```swift
+.onAppear {
+    _ = self.user.listen()
+}
+```
+
+### Copy object
+
+Pass a copy of Object to EditView before editing the data.
+
+```swift
+.sheet(isPresented: $isPresented) {
+    UserEditView(user: self.user.copy(), isPresented: self.$isPresented)
+}
+```
+
+Since the Object is being observed by the listener, changes can be caught automatically.
+
+Finally, create a view that can update the object.
+
+```swift
+struct UserEditView: View {
+
+    @ObservedObject var user: User
+
+    @Binding var isPresented: Bool
+
+    var body: some View {
+
+        VStack {
+
+            Form {
+                Section(header: Text("Name")) {
+                    TextField("Name", text: $user[\.name])
+                }
+            }
+
+            Button("Save") {
+                self.user.update()
+                self.isPresented.toggle()
+            }
+        }.frame(height: 200)
+    }
+}
+```
+
+Updating an object is possible only with `update()`.
+
+```swift
+Button("Update") {
+    self.user.update()
+    self.isPresented.toggle()
+}
 ```

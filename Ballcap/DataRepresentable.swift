@@ -53,6 +53,12 @@ public extension DataRepresentable where Self: Object {
         }
     }
 
+    init(id: String, from data: Model, collectionReference: CollectionReference? = nil) {
+        let collectionReference: CollectionReference = collectionReference ?? Self.collectionReference
+        self.init(collectionReference.document(id))
+        self.data = data
+    }
+
     init?(documentReference: DocumentReference, from data: [String: Any]) {
         self.init(documentReference)
         do {
@@ -67,6 +73,11 @@ public extension DataRepresentable where Self: Object {
             print(error)
             return nil
         }
+    }
+
+    init(documentReference: DocumentReference, from data: Model) {
+        self.init(documentReference)
+        self.data = data
     }
 
     init?(snapshot: DocumentSnapshot) {
@@ -91,7 +102,7 @@ public extension DataRepresentable where Self: Object {
         }
     }
 
-    private func _set(snapshot: DocumentSnapshot) throws {
+    internal func _set(snapshot: DocumentSnapshot) throws {
         self.snapshot = snapshot
         guard let data: [String: Any] = snapshot.data() else {
             self.snapshot = snapshot
@@ -111,13 +122,22 @@ public extension DataRepresentable where Self: Object {
         }
     }
 
-    subscript<T: Any>(keyPath: WritableKeyPath<Model, T>) -> T? {
+    subscript<T: Any>(keyPath: WritableKeyPath<Model, T>) -> T {
         get {
-            return self.data?[keyPath: keyPath]
+            guard let data = self.data else {
+                fatalError("[Ballcap: DataRepresentable] This object has not data.")
+            }
+            return data[keyPath: keyPath]
         }
         set {
-            self.data?[keyPath: keyPath] = newValue!
+            self.data![keyPath: keyPath] = newValue
         }
+    }
+
+    func copy() -> Self {
+        let copySelf: Self = Self.init(self.documentReference)
+        copySelf.data = self.data
+        return copySelf
     }
 
     var description: String {

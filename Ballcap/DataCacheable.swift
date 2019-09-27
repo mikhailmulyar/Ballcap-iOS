@@ -8,6 +8,9 @@
 
 import FirebaseFirestore
 
+public enum DataCacheableError: Error {
+  case serverValueHasNotBeenDetermined
+}
 
 public protocol DataCacheable: class {
 
@@ -29,22 +32,58 @@ public extension DataCacheable where Self: Object {
 
 public extension DataCacheable where Self: Object, Self: DataRepresentable {
 
-    func get(_ completion: @escaping (Self?, Error?) -> Void) {
-        if self.cache != nil {
-            self.data = self.cache
-            completion(self, nil)
+    @discardableResult
+    func get(_ completion: ((Self?, Error?) -> Void)? = nil) -> Self {
+        if let data: [String: Any] = DocumentCache.shared.get(reference: self.documentReference) {
+            do {
+                self.data = try Firestore.Decoder().decode(Model.self, from: data)
+                if data.keys.contains("createdAt") {
+                    if let createdAt: Timestamp = data["createdAt"] as? Timestamp {
+                        self.createdAt = createdAt
+                    } else {
+                        throw DataCacheableError.serverValueHasNotBeenDetermined
+                    }
+                }
+                if data.keys.contains("updatedAt") {
+                    if let updatedAt: Timestamp = data["updatedAt"] as? Timestamp {
+                        self.updatedAt = updatedAt
+                    } else {
+                        throw DataCacheableError.serverValueHasNotBeenDetermined
+                    }
+                }
+                if Thread.isMainThread {
+                    completion?(self, nil)
+                } else {
+                    DispatchQueue.main.async {
+                        completion?(self, nil)
+                    }
+                }
+            } catch {
+                Self.get(documentReference: self.documentReference, source: .cache) { (object, error) in
+                    if let object: Self = object {
+                        self.data = object.data
+                        completion?(object, error)
+                    } else {
+                        Self.get(documentReference: self.documentReference, source: .server) { (object, error) in
+                            self.data = object?.data
+                            completion?(object, error)
+                        }
+                    }
+                }
+            }
         } else {
             Self.get(documentReference: self.documentReference, source: .cache) { (object, error) in
                 if let object: Self = object {
                     self.data = object.data
-                    completion(object, error)
+                    completion?(object, error)
                 } else {
                     Self.get(documentReference: self.documentReference, source: .server) { (object, error) in
                         self.data = object?.data
-                        completion(object, error)
+                        completion?(object, error)
                     }
                 }
             }
         }
+        return self
     }
 }
