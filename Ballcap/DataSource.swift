@@ -143,10 +143,7 @@ public final class DataSource<T: Object & DataRepresentable>: ExpressibleByArray
             guard let snapshot: QuerySnapshot = snapshot else {
                 return
             }
-            guard let lastSnapshot = snapshot.documents.last else {
-                return
-            }
-            if !snapshot.metadata.hasPendingWrites {
+            if let lastSnapshot = snapshot.documents.last, !snapshot.metadata.hasPendingWrites {
                 self.query = self.query.start(afterDocument: lastSnapshot)
             }
             self._execute(snapshot: snapshot)
